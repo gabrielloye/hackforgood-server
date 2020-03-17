@@ -1,0 +1,56 @@
+use hfg_db;
+
+create table if not exists item(
+	id int auto_increment primary key,
+	name varchar(255) not null,
+	image varchar(255) default null,
+	info varchar(3000) default null,
+	baseprice float(12,2) not null,
+	wastage float(6,5) default 0.00000
+);
+
+create table if not exists batch(
+	itemid int,
+	batchid int auto_increment primary key,
+	quantity int default 0,
+	expiry timestamp default CURRENT_TIMESTAMP,
+	foreign key (itemid) references item(id)
+);
+
+insert into item (name,image,info,baseprice,wastage) values ('Meji Fresh Milk 2L','https://i.imgur.com/ASQpcsc.jpg','Made from 100% fresh milk, no additives or preservatives',5.2,0.10251);
+insert into item (name,image,info,baseprice,wastage) values ('Whole Fresh Chicken','https://i.imgur.com/pMcpDa8.jpg','GMO free, product of Thailand',7.2,0.32100);
+insert into item (name,image,info,baseprice,wastage) values ('Sirloin Steak','https://i.imgur.com/31g2jhX.jpg','Australian fresh grass-fed beef steak',27,0.32140);
+insert into item (name,image,info,baseprice,wastage) values ('Fresh Eggs','https://i.imgur.com/QzWwpSI.jpg','30 chicken eggs, imported from Malaysia',4.8,0.21200);
+insert into item (name,image,info,baseprice,wastage) values ('Meiji Natural Yoghurt 500g','https://i.imgur.com/8IroZYA.jpg','Low fat, High in protein and calcium. 100% Natural',8.2,0.33333);
+insert into item (name,image,info,baseprice,wastage) values ('White Button Mushroom','https://i.imgur.com/2qCogHs.jpg','High in vitamin, iron, and protein. GMO free grown in Malaysia',4.2,0.10020);
+insert into item (name,image,info,baseprice,wastage) values ('Whole Salmon','https://i.imgur.com/6GOuzZY.jpg','Whole wild salmon, air-flown from Norway',35,0.32803);
+insert into item (name,image,info,baseprice,wastage) values ('Rack of Lamb','https://i.imgur.com/qW1F4Ob.jpg','300g frenched rack of lamb. Australian grass-fed. Perfect for roasting',43,0.25000);
+insert into item (name,image,info,baseprice,wastage) values ('Jumbo Prawns','https://i.imgur.com/DI2U3b2.jpg','Live jumbo prawns. Freshly imported from Thailand.',22,0.21111);
+
+insert into batch (itemid, quantity, expiry) values (1, 120, '2020-04-02');
+insert into batch (itemid, quantity, expiry) values (1, 120, '2020-04-09');
+insert into batch (itemid, quantity, expiry) values (1, 120, '2020-04-16');
+insert into batch (itemid, quantity, expiry) values (2, 100, '2020-04-03');
+insert into batch (itemid, quantity, expiry) values (2, 100, '2020-04-10');
+insert into batch (itemid, quantity, expiry) values (2, 100, '2020-04-24');
+insert into batch (itemid, quantity, expiry) values (3, 50, '2020-04-03');
+insert into batch (itemid, quantity, expiry) values (3, 50, '2020-04-06');
+insert into batch (itemid, quantity, expiry) values (3, 50, '2020-04-14');
+insert into batch (itemid, quantity, expiry) values (4, 100, '2020-04-06');
+insert into batch (itemid, quantity, expiry) values (4, 100, '2020-04-12');
+insert into batch (itemid, quantity, expiry) values (4, 100, '2020-04-18');
+insert into batch (itemid, quantity, expiry) values (5, 100, '2020-04-08');
+insert into batch (itemid, quantity, expiry) values (5, 100, '2020-04-15');
+insert into batch (itemid, quantity, expiry) values (5, 100, '2020-04-30');
+insert into batch (itemid, quantity, expiry) values (6, 100, '2020-04-04');
+insert into batch (itemid, quantity, expiry) values (6, 100, '2020-04-12');
+insert into batch (itemid, quantity, expiry) values (6, 100, '2020-04-21');
+insert into batch (itemid, quantity, expiry) values (7, 30, '2020-04-02');
+insert into batch (itemid, quantity, expiry) values (7, 30, '2020-04-16');
+insert into batch (itemid, quantity, expiry) values (7, 30, '2020-04-25');
+insert into batch (itemid, quantity, expiry) values (8, 30, '2020-04-05');
+insert into batch (itemid, quantity, expiry) values (8, 30, '2020-04-14');
+insert into batch (itemid, quantity, expiry) values (8, 30, '2020-04-22');
+insert into batch (itemid, quantity, expiry) values (9, 40, '2020-04-01');
+insert into batch (itemid, quantity, expiry) values (9, 40, '2020-04-09');
+insert into batch (itemid, quantity, expiry) values (9, 40, '2020-04-20');
